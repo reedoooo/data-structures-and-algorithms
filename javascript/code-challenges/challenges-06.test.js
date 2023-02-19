@@ -22,9 +22,29 @@ For example:
 Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
-const getNames = (arr) => {
-  // Solution code here...
+const getNames = (people) => {
+  const reversedNames = people.map((person) => {
+    // Get the name property of the person object and split it into components using space as separator
+    let nameComponents = person.name.split(' ');
+
+    // Create a new array to hold the reversed components
+    let reversedComponents = [];
+
+    // Loop over the components in reverse order and add them to the new array
+    for (let i = nameComponents.length - 1; i >= 0; i--) {
+      reversedComponents.push(nameComponents[i]);
+    }
+
+    // Join the components back into a string using space as separator
+    let reversedName = reversedComponents.join('');
+
+    // Return the reversed name
+    return reversedName;
+  });
+
+  return reversedNames;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -34,7 +54,14 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-  // Solution code here...
+  // Make a copy of the original string
+  let newString = str;
+
+  // Append ' The end.' to the copy of the string
+  newString += ' The end.';
+
+  // Return the modified string
+  return newString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,8 +78,13 @@ console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-  // Solution code here...
+  // Store the first element in a variable
+  const firstElement = arr[0];
+
+  // Add the first element to the end of the array
+  arr.push(firstElement);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -70,7 +102,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-  // Solution code here...
+  obj.yearBorn = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,7 +155,7 @@ Run your tests from the console: jest challenges-02.test.js
 
 describe('Testing challenge 1', () => {
   test('It returns an array of names reversed', () => {
-    expect(getNames([{name:'lloyd', age: 32, shoeSize: 12}, {name:'jamie', age:21, shoeSize: 8}])).toStrictEqual(['dyoll', 'eimaj']);
+    expect(getNames([{ name: 'lloyd', age: 32, shoeSize: 12 }, { name: 'jamie', age: 21, shoeSize: 8 }])).toStrictEqual(['dyoll', 'eimaj']);
     expect(getNames([])).toStrictEqual([]);
   });
 });
