@@ -23,27 +23,11 @@ Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
 const getNames = (people) => {
-  const reversedNames = people.map((person) => {
-    // Get the name property of the person object and split it into components using space as separator
-    let nameComponents = person.name.split(' ');
-
-    // Create a new array to hold the reversed components
-    let reversedComponents = [];
-
-    // Loop over the components in reverse order and add them to the new array
-    for (let i = nameComponents.length - 1; i >= 0; i--) {
-      reversedComponents.push(nameComponents[i]);
-    }
-
-    // Join the components back into a string using space as separator
-    let reversedName = reversedComponents.join('');
-
-    // Return the reversed name
-    return reversedName;
+  return people.map((person) => {
+    return person.name.split("").reverse().join("");
   });
-
-  return reversedNames;
 };
+
 
 
 /* ------------------------------------------------------------------------------------------------
