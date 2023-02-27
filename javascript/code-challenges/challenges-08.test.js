@@ -120,9 +120,10 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  const pattern = /^[A-Z]/;
-  return pattern.test(str);
+  const pattern = /\b[A-Z][a-z]*\b/g;
+  return str.match(pattern) || [];
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -134,6 +135,7 @@ const citiesAtoJ = (arr) => {
   const pattern = /^[A-J]/;
   return arr.filter(city => pattern.test(city));
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
