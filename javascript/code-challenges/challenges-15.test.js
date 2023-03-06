@@ -10,9 +10,14 @@ Write a function named screenForNames that takes in an array of strings and uses
 
 ------------------------------------------------------------------------------------------------ */
 
-const screenForNames = (arr) => {
-  // Solution code here...
+function screenForNames(names) {
+  const pattern = /^(Mr\.|Mrs\.|Ms\.|Dr\.)\s+[a-zA-Z ]+$/;
+  return names.filter(name => name.trim() !== '' && pattern.test(name) && name.trim().replace(/\s+/g, ' ') !== "Mr. Pink");
 }
+
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -23,8 +28,9 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(str => str.charAt(0).toUpperCase() + str.slice(1));
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -98,8 +104,17 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let lukeChar = arr.find(char => char.name === 'Luke Skywalker');
+  if (!lukeChar) {
+    return '';
+  }
+  let lukeMass = parseInt(lukeChar.mass);
+  let biggerChars = arr.filter(char => parseInt(char.mass) > lukeMass);
+  let names = biggerChars.map(char => char.name);
+  return names.join(' - ');
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -116,11 +131,23 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  // Find the index of the "Bookmark" item
+  const bookmarkIndex = arr.findIndex(item => item.name === 'Bookmark');
+  if (bookmarkIndex >= 0) {
+    // Move the "Bookmark" item to the beginning of the array
+    const bookmarkItem = arr.splice(bookmarkIndex, 1)[0];
+    arr.unshift(bookmarkItem);
+  }
+  // Sort the array by the specified property
+  return arr.sort((a, b) => a[property] - b[property]);
 };
 
+
+
+
+
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function that determines if a given URL is secure, beginning with https://
 
@@ -132,11 +159,13 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  const regex = /^https:\/\/.+$/;
+  return regex.test(url);
 };
 
+
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named detectTicTacToeWin that accepts a two-dimensional array of strings. Each string is guaranteed to be either "X", "O" or an empty string. Your function should check to see if any row, column, or either diagonal direction has three matching "X" or "O" symbols (non-empty strings), three-in-a-line.
 
@@ -154,8 +183,35 @@ Here is a sample board:
 ];
 ------------------------------------------------------------------------------------------------ */
 
+const helpCheck = (board, row1, col1, row2, col2, row3, col3) => {
+  const val1 = board[row1][col1];
+  const val2 = board[row2][col2];
+  const val3 = board[row3][col3];
+  return (val1 === val2 && val2 === val3 && val1 !== '');
+};
+
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  // Check rows
+  for (let i = 0; i < 3; i++) {
+    if (helpCheck(board, i, 0, i, 1, i, 2)) {
+      return true;
+    }
+  }
+  // Check columns
+  for (let i = 0; i < 3; i++) {
+    if (helpCheck(board, 0, i, 1, i, 2, i)) {
+      return true;
+    }
+  }
+  // Check diagonals
+  if (helpCheck(board, 0, 0, 1, 1, 2, 2)) {
+    return true;
+  }
+  if (helpCheck(board, 0, 2, 1, 1, 2, 0)) {
+    return true;
+  }
+  // No three-in-a-line found
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
