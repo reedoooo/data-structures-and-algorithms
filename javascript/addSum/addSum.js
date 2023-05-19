@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function rowSums(matrix) {
   let result = [];
@@ -11,7 +11,6 @@ function rowSums(matrix) {
   }
   return result;
 }
-
 
 export default rowSums;
 
