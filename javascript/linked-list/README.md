@@ -2,42 +2,66 @@
 
 <!-- Description of the challenge -->
 
-Take in an array and a number as input, output an array with the number value in the middle of the array
+Build a linked list
 
 ## Whiteboard Process
 
 <!-- Embedded whiteboard image -->
 
-![insertShiftArrayUmi](./shiftArrayUml.jpeg) <!-- Replace with actual link -->
 
 ## Approach & Efficiency
 
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-Approach was same as usual using a loop.
+Approach was to create a linked list
 
 ## Solution
 
 <!-- Show how to run your code, and examples of it in action -->
 
-Solution was to divide array in half and then iterate through that and if i equals half of the array, then to push the number into the array and then to push the new array if the inital array reached the i value.
 
-function insertShiftArray(arr, num) {
-let arr2 = [];
-let middle = Math.ceil(arr.length / 2);
-
-for(let i = 0; i < arr.length; i++){
-if(i === middle){
-arr2.push(num);
-}
-arr2.push(arr[i]);
+class Node {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
 }
 
-// If the array length is even, the middle index will be right after the last element,
-// so we need to insert the number at the end of the array.
-if(arr.length % 2 === 0) {
-arr2.push(num);
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insert(value) {
+    let node = new Node(value);
+    if (this.head !== null) {
+      node.next = this.head;
+    }
+    this.head = node;
+  }
+
+  includes(value) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
+
+  toString() {
+    let values = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      values.push(`{ ${currentNode.value} }`);
+      currentNode = currentNode.next;
+    }
+    values.push("NULL");
+    return values.join(" -> ");
+  }
 }
 
-return arr2;
-}
+export default LinkedList;
+
