@@ -1,3 +1,24 @@
+# Code Challenge 01: Reverse-Arrays
+
+<!-- Description of the challenge -->
+
+Build a linked list
+
+## Whiteboard Process
+
+<!-- Embedded whiteboard image -->
+
+
+## Approach & Efficiency
+
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+
+Approach was to create a linked list
+
+## Solution
+
+<!-- Show how to run your code, and examples of it in action -->
+
 
 class Node {
   constructor(value, next = null) {
@@ -43,3 +64,4 @@ class LinkedList {
 }
 
 export default LinkedList;
+
