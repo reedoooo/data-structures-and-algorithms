@@ -1,4 +1,4 @@
-# Code Challenge 01: Reverse-Arrays
+# Code Challenge 05: linked-lists
 
 <!-- Description of the challenge -->
 
