@@ -8,7 +8,7 @@ The goal is to zip two linked lists together into one so that the nodes alternat
 
 <!-- Embedded whiteboard image -->
 
-[Whiteboard Process]()
+[Whiteboard Process](https://github.com/reedoooo/data-structures-and-algorithms/blob/a380b100a889e1b6ac225a09048c6b6b459e0c1e/javascript/linked-list-zip/linked-list-zip.jpeg)
 
 ## Approach & Efficiency
 
