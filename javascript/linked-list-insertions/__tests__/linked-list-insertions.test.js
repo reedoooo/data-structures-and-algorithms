@@ -1,4 +1,5 @@
-import LinkedList from '../index';
+// Run: yarn jest linked-list-insertions
+const LinkedList = require('../index');
 
 test('LinkedList operations', () => {
   let ll = new LinkedList();
