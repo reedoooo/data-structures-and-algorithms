@@ -20,8 +20,7 @@ function insertShiftArray(arr, num) {
   return arr2;
 }
 
-export default insertShiftArray;
-
+module.exports = insertShiftArray;
 // function insertShiftArray(arr, value) {
 //   let arr2 = [];
 //   let middle = Math.ceil(arr.length / 2);

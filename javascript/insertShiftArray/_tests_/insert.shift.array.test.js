@@ -1,4 +1,5 @@
-import insertShiftArray from '../insert-shift-array.js';
+'use strict';
+const insertShiftArray = require('../insert-shift-array.js');
 
 describe('insertShiftArray', () => {
   it('should add a value in the middle of an array', () => {

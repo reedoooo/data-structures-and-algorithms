@@ -1,24 +1,26 @@
-import insertShiftArray from '../insert-shift-array.js';
+const binarySearch = require('../binarySearch');
 
-describe('insertShiftArray', () => {
-  it('should add a value in the middle of an array', () => {
-    const array = [1, 2, 3, 4];
-    const value = 5;
-    const result = insertShiftArray(array, value);
-    expect(result).toEqual([1, 2, 5, 3, 4]);
+describe('binarySearch', () => {
+  test('should return the correct index for the search key', () => {
+    const array = [2, 5, 8, 12, 16, 23, 38, 42];
+    const searchKey = 16;
+
+    expect(binarySearch(array, searchKey)).toBe(4);
   });
 
-  it('should add a value in the middle of an array with odd length', () => {
-    const array = [1, 2, 3, 4, 5];
-    const value = 6;
-    const result = insertShiftArray(array, value);
-    expect(result).toEqual([1, 2, 3, 6, 4, 5]);
+  test('should return -1 if the search key is not found', () => {
+    const array = [2, 5, 8, 12, 16, 23, 38, 42];
+    const searchKey = 9;
+
+    expect(binarySearch(array, searchKey)).toBe(-1);
   });
 
-  it('should add a value to an empty array', () => {
+  test('should return -1 for an empty array', () => {
     const array = [];
-    const value = 1;
-    const result = insertShiftArray(array, value);
-    expect(result).toEqual([1]);
+    const searchKey = 7;
+
+    expect(binarySearch(array, searchKey)).toBe(-1);
   });
+
+  // Add more test cases to cover different scenarios and edge cases
 });
