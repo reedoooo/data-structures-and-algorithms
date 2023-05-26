@@ -1,8 +1,8 @@
-# Code Challenge 07: linked-list-kth
+# Code Challenge 09: reverse-linked-list
 
 <!-- Description of the challenge -->
 
-Write the kth from end function for a linked list
+We have been asked to write a function in JavaScript to reverse a singly linked list. A linked list is a data structure that consists of a group of nodes, where each node contains a value and a reference (link) to the next node in the sequence. Reversing a linked list means changing the direction of the 'next' reference in every node such that the last node becomes the first and so on.
 
 ## Whiteboard Process
 
