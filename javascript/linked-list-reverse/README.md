@@ -8,7 +8,7 @@ Write the kth from end function for a linked list
 
 <!-- Embedded whiteboard image -->
 
-![LinkedListKth](./linkedListKth.png)
+![LinkedListKth](https://github.com/reedoooo/data-structures-and-algorithms/blob/6f7231682fb23a945adb57b2cd533aee986fcb73/javascript/linked-list-reverse/linked-list-reverse.jpeg)
 
 ## Approach & Efficiency
 
@@ -25,4 +25,4 @@ Update previousNode and currentNode with currentNode and nextNode respectively.
 
 <!-- Show how to run your code, and examples of it in action -->
 
-[Link to JS File](./linked-list-reverse.jpeg)
+[Link to JS File](./index.js)
