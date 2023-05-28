@@ -8,7 +8,7 @@ Write the kth from end function for a linked list
 
 <!-- Embedded whiteboard image -->
 
-![Stacks](https://github.com/reedoooo/data-structures-and-algorithms/blob/6f7231682fb23a945adb57b2cd533aee986fcb73/javascript/linked-list-reverse/linked-list-reverse.jpeg)
+![Stacks](https://github.com/reedoooo/data-structures-and-algorithms/blob/bdc2795e7fc89a1bab8a5407707459baf2e5e8b8/javascript/reading-and-queue/Stack%20and%20Queue.jpeg)
 
 ## Approach & Efficiency
 
