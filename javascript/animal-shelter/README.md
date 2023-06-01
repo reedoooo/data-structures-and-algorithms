@@ -12,4 +12,3 @@ Define a dequeue method that takes a preference (either "cat" or "dog"). It will
 ## Solution
 
 ![whiteboard snapshot](./index.js)
-
