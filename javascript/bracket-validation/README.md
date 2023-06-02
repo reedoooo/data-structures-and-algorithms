@@ -1,4 +1,4 @@
-# Code Challenge 01: Reverse-Arrays
+# Code Challenge 13: Bracket Validation
 <!-- Description of the challenge -->
 The problem requires us to write a function in JavaScript called validateBrackets that takes a string as an argument and returns a boolean value representing whether or not the brackets in the string are balanced. We need to check if the brackets in the string are properly opened and closed.
 
