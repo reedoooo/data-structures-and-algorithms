@@ -1,4 +1,3 @@
-
 # Coding Challenge 30: tree-something
 
 ## Problem Domain
