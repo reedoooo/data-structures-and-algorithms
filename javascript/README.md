@@ -1,20 +1,15 @@
 # Data Structures and Algorithms
 
-## Language: `JavaScript`
+This project is written in JavaScript.
 
-### Folder and Challenge Setup
+## Project Setup Instructions
 
-Each type of code challenge has slightly different instructions. Please refer to the notes and examples below for instructions for each DS&A assignment type.
+Below you will find instructions on setting up different types of assignments for Data Structures & Algorithms (DS&A).
 
-### Data Structure: New Implementation
+### New Data Structure Implementation
 
-- Create a new folder under the `javascript` level, with the name of the data structure and complete your implementation there
-  - i.e. `linked-list`
-- Implementation (the data structure "class")
-  - The implementation of the data structure must be named `index.js`
-  - Your implementation must be completed as a proper ES6 Class, and exported as a node module
-    - Class Name must be `ProperCase`
-    - Class Methods must be `camelCase`
+1. Create a new folder under the `javascript` directory with the name of the data structure (e.g., `linkedList`).
+2. Create a new file called `index.js` in this folder, where you'll implement your data structure as an ES6 Class.
 
     ```javascript
     class LinkedList {
@@ -25,61 +20,109 @@ Each type of code challenge has slightly different instructions. Please refer to
       methodName() {
         // code
       }
-
     }
+
     module.exports = LinkedList;
     ```
 
-- Tests
-  - Create folder named `__tests__` and within it, a test file called `[data-structure].test.js`
-    - i.e. `__tests__/linked-list.test.js`
-    - Your tests will then need to require the data structure you're testing
-      - i.e. `const LinkedList = require('../index');
+3. Create a test folder named `__tests__` within your data structure's folder, and create a test file called `[data-structure].test.js` (e.g., `__tests__/linkedList.test.js`).
 
-### Data Structure: Extending an implementation
+### Extending a Data Structure
 
-- Work within the data structure implementation
-- Create a new method within the class that solves the code challenge
-  - Remember, you'll have access to `this` within your class methods
-- Tests
-  - You will have folder named `__tests__` and within it, a test file called `[data-structure].test.js`
-    - i.e. `__tests__/linked-list.test.js`
-    - Add to the tests written for this data structure to cover your new method(s)
+1. Create a new method within the existing data structure class that solves the code challenge.
+2. Modify the existing test file (`[data-structure].test.js`) within the `__tests__` folder to cover your new method(s).
 
 ### Code Challenge / Algorithm
 
-Code challenges should be completed within a folder named `code-challenges` under the `javascript` level
-
-- Daily Setup:
-  - Create a new folder under the `javascript` level, with the name of the code challenge
-    - Each code challenge assignment identifies the branch name to use, for example 'find-maximum-value'
-    - For clarity, create your folder with the same name, ensuring that it's `kebab-cased`
-    - i.e. For a challenge named 'find-maximum-value', create the folder:`code-challenges/find-maximum-value`
-  - Code Challenge Implementation
-    - Each code challenge requires a function be written, for example "find maximum value"
-    - Name the actual challenge file with the name of the challenge, in `kebab-case`
-      - i.e. `find-maximum-value.js`
-    - Reminder: Your challenge file will then need to require the data structure you're using to implement
-      - i.e. `const LinkedList = require('../linked-list');
-    - Your challenge function name is up to you, but it's recommended that you use camel case
-      - i.e. `function findMaximumValue(list) { ... }`
-    - Be sure to export your function so that you can write tests
-  - Tests
-    - Create folder named `__tests__` and within it, a test file called `[challenge].test.js`
-      - i.e. `__tests__/find-maximum-value.test.js`
-      - Your test file would require the challenge file found in the directory above, which has your exported function
-        - i.e. `const reverse = require('../find-maximum-value.js');
+1. Create a new folder under the `javascript` directory with the name of the code challenge.
+2. Write your code challenge implementation in a new file named after the challenge in `kebab-case` (e.g., `find-maximum-value.js`).
+3. Create a test folder named `__tests__` within your code challenge's folder, and create a test file called `[challenge].test.js` (e.g., `__tests__/find-maximum-value.test.js`).
 
 ## Running Tests
 
-If you setup your folders according to the above guidelines, running tests becomes a matter of deciding which tests you want to execute.  Jest does a good job at finding the test files that match what you specify in the test command
+- Run all tests: `npm test`
+- Run a specific data structure's tests: `npm test [data-structure]`
+- Run a specific challenge's tests: `npm test [challenge-name]`
 
-From the `data-structures-and-algorithms/javascript` folder, execute the following commands:
+GitHub will automatically run your tests when you push to your repo.
 
-- **Run every possible test** - `npm test`
-- **Run a test for a data structure** - `npm test linked-list`
-- **Run a test for a specific challenge** - `npm test reverse-ll`
+## 401 Code Challenges
 
-#### Live Tests
+### Arrays
 
-Note that when you check your code into GitHub, all of your tests will automatically execute. These results should match your own, and will be found on the  **Actions** tab
+- [Reverse Arrays](./reverseArrays/reverseArray/README.md)
+  <!-- An algorithm to reverse an array in place -->
+
+- [Insert Shift Array](./arrayInsertShift/insertShiftArray/README.md)
+  <!-- A challenge that deals with inserting an element into the middle of an array -->
+
+- [Binary Search Array](./arrayBinarySearch/array-binary-search/README.md)
+  <!-- A challenge that implements the binary search algorithm to find an element in a sorted array -->
+
+### Linked Lists
+
+- [Linked Lists](./linkedList/linked-list/README.md)
+  <!-- This covers the implementation of the Linked List data structure -->
+
+- [Zip Lists](./linkedList/linked-list-zip/README.md)
+  <!-- A challenge that deals with merging two linked lists by alternating nodes -->
+
+- [Stacks](./linkedList/reading-and-queue/README.md)
+  <!-- This covers the implementation of the Stack data structure -->
+
+- [Queues](./linkedList/)
+  <!-- This covers the implementation of the Queue data structure -->
+
+- [pseudoQueues](./linkedList/stack-queue-pseudo/README.md)
+  <!-- A challenge that implements a queue using two stacks -->
+
+- [Animal Shelter](./linkedList/animal-shelter/README.md)
+  <!-- A code challenge that simulates an animal shelter queue system -->
+
+- [Bracket Validator](./linkedList/bracket-validation/README.md)
+  <!-- A challenge that validates the proper pairing and nesting of brackets in a string -->
+
+### Trees
+
+- [Binary Trees & Binary Search Trees](./trees/tree/README.md)
+  <!-- This covers the implementation of Binary Trees and Binary Search Trees data structures -->
+
+- [Breadth First Traversal on Binary Tree](./trees/breadth-first-traversal/README.md)
+  <!-- A challenge that implements the Breadth-First Traversal on a binary tree -->
+
+- [FizzBuzz on a K-Ary Tree](./trees/tree-fizz-buzz/README.md)
+  <!-- A challenge that modifies a K-Ary tree with FizzBuzz logic -->
+
+### Sorting Algorithms & Hash Tables
+
+- [InsertionSort](./sorting/insertion/README.md)
+  <!-- This covers the implementation of the Insertion Sort algorithm -->
+
+- [MergeSort](./sorting/merge/README.md)
+  <!-- This covers the implementation of the Merge Sort algorithm -->
+
+- [HashTables](./hashtable/README.md)
+  <!-- This covers the implementation of the Hash Table data structure -->
+
+- [Repeated Word in HashTables](./hashtable/repeatedWords/README.md)
+  <!-- A challenge that finds the first repeated word in a string using Hash Tables -->
+
+- [Tree Intersection](./tree-intersection/README.md)
+  <!-- A challenge that finds common nodes between two binary trees -->
+
+- [HashTables - Left Join](./leftjoin/README.md)
+  <!-- A challenge that performs a left join on two hash tables -->
+
+### Graphs
+
+- [Directed Graph, Adjacency List](./graph/README.md)
+  <!-- This covers the implementation of a Directed Graph data structure using Adjacency List -->
+
+- [Breadth First Traversal](./graph/README.md)
+  <!-- A challenge that implements the Breadth-First Traversal on a graph -->
+
+- [Business Trip](./graph/businessTrip/README.md)
+  <!-- A challenge that calculates the total cost of a trip in a weighted graph -->
+
+- [Depth First Traversal (preOrder)](./graph/README.md)
+  <!-- A challenge that implements the Depth-First Traversal (preOrder) on a graph -->
