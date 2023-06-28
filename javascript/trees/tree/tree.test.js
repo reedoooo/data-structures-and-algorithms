@@ -1,4 +1,4 @@
-const { BinaryTree, BinarySearchTree, Node } = require('./your-file'); // Replace './your-file' with the actual path to your code file
+const { BinaryTree, BinarySearchTree, Node } = require('./index'); // Replace './your-file' with the actual path to your code file
 
 describe('BinaryTree', () => {
   let binaryTree;
