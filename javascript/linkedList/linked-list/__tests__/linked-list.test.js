@@ -1,5 +1,7 @@
 // Description: Tests for LinkedList class
-const LinkedList = require('../index');
+
+const { LinkedList } = require('../index');
+
 describe('LinkedList', () => {
   test('initial LinkedList is empty', () => {
     const list = new LinkedList();

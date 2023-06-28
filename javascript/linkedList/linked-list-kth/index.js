@@ -18,7 +18,7 @@ function findKthFromEnd(head, k) {
   // Move p2 k positions ahead
   for (let i = 0; i < k; i++) {
     if (p2 === null) {
-      return null;
+      throw new Error('k is larger than the linked list size');
     }
     p2 = p2.next;
   }
@@ -29,7 +29,12 @@ function findKthFromEnd(head, k) {
     p2 = p2.next;
   }
 
-  return p1.value;
+  // Check if p1 is null before trying to access its value property
+  if (p1 === null) {
+    throw new Error('k is larger than the linked list size');
+  } else {
+    return p1.value;
+  }
 }
 
 module.exports = { findKthFromEnd, Node, LinkedList };
