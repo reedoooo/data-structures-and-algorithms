@@ -11,7 +11,7 @@ Write a function called `treeIntersection` that takes two binary trees as parame
 ### Whiteboard Process
 
 **Tree Intersection Whiteboard**
-![Tree Intersection Whiteboard](./tree-intersection.JPEG)
+![Tree Intersection Whiteboard](./tree-intersection.jpeg)
 
 ### Approach and Efficiency
 
