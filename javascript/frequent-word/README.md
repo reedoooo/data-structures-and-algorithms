@@ -6,7 +6,7 @@ We need to develop a function that accepts a string as an argument and determine
 
 ## Whiteboard Process
 
-![Frequent Word Whiteboard](./frequent-word)
+![Frequent Word Whiteboard](./frequent-word.jpeg)
 
 The whiteboard process involved visually representing the problem and designing an algorithm to solve it.
 
