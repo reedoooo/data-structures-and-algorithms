@@ -50,14 +50,11 @@ GitHub will automatically run your tests when you push to your repo.
 
 ### Arrays
 
-- [Reverse Arrays](./reverseArrays/reverseArray/README.md)
+- [Reverse Arrays](./arrays/reverseArrays/reverseArray/README.md)
   <!-- An algorithm to reverse an array in place -->
 
-- [Insert Shift Array](./arrayInsertShift/insertShiftArray/README.md)
+- [Insert Shift Array](./arrays/arrayInsertShift/insertShiftArray/README.md)
   <!-- A challenge that deals with inserting an element into the middle of an array -->
-
-- [Binary Search Array](./arrayBinarySearch/array-binary-search/README.md)
-  <!-- A challenge that implements the binary search algorithm to find an element in a sorted array -->
 
 ### Linked Lists
 
@@ -67,11 +64,14 @@ GitHub will automatically run your tests when you push to your repo.
 - [Zip Lists](./linkedList/linked-list-zip/README.md)
   <!-- A challenge that deals with merging two linked lists by alternating nodes -->
 
-- [Stacks](./linkedList/reading-and-queue/README.md)
+- [Reading and Queue](./linkedList/reading-and-queue/README.md)
   <!-- This covers the implementation of the Stack data structure -->
 
-- [Queues](./linkedList/)
+- [Queues](./linkedList/queues/README.md)
   <!-- This covers the implementation of the Queue data structure -->
+
+- [Stacks](./linkedList/stacks/README.md)
+  <!-- This covers the implementation of the Stack data structure -->
 
 - [pseudoQueues](./linkedList/stack-queue-pseudo/README.md)
   <!-- A challenge that implements a queue using two stacks -->
@@ -82,10 +82,19 @@ GitHub will automatically run your tests when you push to your repo.
 - [Bracket Validator](./linkedList/bracket-validation/README.md)
   <!-- A challenge that validates the proper pairing and nesting of brackets in a string -->
 
-### Trees
+### Binary Trees & Binary Search Trees
 
-- [Binary Trees & Binary Search Trees](./trees/tree/README.md)
+- [Binary Trees Manipulation](./trees/binary-tree-manipulation//README.md)
   <!-- This covers the implementation of Binary Trees and Binary Search Trees data structures -->
+
+- [Binary Search Array](./trees/array-binary-search/README.md)
+  <!-- This covers the implementation of Binary Trees and Binary Search Trees data structures -->
+
+- [Binary Search](./trees/binary-search/README.md)
+  <!-- This covers the implementation of Binary Trees and Binary Search Trees data structures -->
+
+- [Max Value of Binary Tree](./trees/binary-tree-max-value/README.md)
+  <!-- An algorithm to reverse an array in place -->
 
 - [Breadth First Traversal on Binary Tree](./trees/breadth-first-traversal/README.md)
   <!-- A challenge that implements the Breadth-First Traversal on a binary tree -->
@@ -93,13 +102,10 @@ GitHub will automatically run your tests when you push to your repo.
 - [FizzBuzz on a K-Ary Tree](./trees/tree-fizz-buzz/README.md)
   <!-- A challenge that modifies a K-Ary tree with FizzBuzz logic -->
 
-### Sorting Algorithms & Hash Tables
+- [Tree Intersection](./tree-intersection/README.md)
+  <!-- A challenge that finds common nodes between two binary trees -->
 
-- [InsertionSort](./sorting/insertion/README.md)
-  <!-- This covers the implementation of the Insertion Sort algorithm -->
-
-- [MergeSort](./sorting/merge/README.md)
-  <!-- This covers the implementation of the Merge Sort algorithm -->
+### Hash Tables
 
 - [HashTables](./hashtable/README.md)
   <!-- This covers the implementation of the Hash Table data structure -->
@@ -107,11 +113,20 @@ GitHub will automatically run your tests when you push to your repo.
 - [Repeated Word in HashTables](./hashtable/repeatedWords/README.md)
   <!-- A challenge that finds the first repeated word in a string using Hash Tables -->
 
-- [Tree Intersection](./tree-intersection/README.md)
-  <!-- A challenge that finds common nodes between two binary trees -->
-
-- [HashTables - Left Join](./leftjoin/README.md)
+- [HashTables - Left Join](./hashtable/leftjoin/README.md)
   <!-- A challenge that performs a left join on two hash tables -->
+
+### Sorting Algorithms
+
+- [ComparisonSort](./sorting/comparisons/README.md)
+  <!-- This covers the implementation of the Insertion Sort algorithm -->
+
+- [InsertionSort](./sorting/insertion/README.md)
+  <!-- This covers the implementation of the Insertion Sort algorithm -->
+
+- [MergeSort](./sorting/merge/README.md)
+  <!-- This covers the implementation of the Merge Sort algorithm -->
+
 
 ### Graphs
 
