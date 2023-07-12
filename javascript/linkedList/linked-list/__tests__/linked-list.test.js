@@ -28,6 +28,21 @@ describe('LinkedList', () => {
     expect(list.includes(5)).toBe(false);
   });
 
+  test('append adds new node at the end of the list', () => {
+    const list = new LinkedList();
+    list.insert(2);
+    list.insert(1);
+    list.append(3);
+    expect(list.toString()).toBe('{ 1 } -> { 2 } -> { 3 } -> NULL');
+  });
+
+  test('append works correctly on an empty list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    expect(list.head.value).toBe(1);
+    expect(list.toString()).toBe('{ 1 } -> NULL');
+  });
+
   test('toString returns formatted string representation of list', () => {
     const list = new LinkedList();
     list.insert(3);

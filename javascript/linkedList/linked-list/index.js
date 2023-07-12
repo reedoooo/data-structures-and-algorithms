@@ -25,6 +25,19 @@ class LinkedList {
     this.head = node; // Set new Node as head of the list
   }
 
+  append(value) {
+    let node = new Node(value);
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next !== null) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+    }
+  }
+
   // includes method checks if a value is in the linked list
   includes(value) {
     let currentNode = this.head; // Start at the head of the list

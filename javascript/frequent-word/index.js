@@ -1,6 +1,10 @@
 function mostCommonWord(string) {
+  if (typeof string !== 'string') {
+    throw new Error('Input must be a string');
+  }
+
   string = string.toLowerCase();
-  let words = string.split(' ');
+  let words = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').split(' ');
   let wordCounts = {};
 
   for (let word of words) {

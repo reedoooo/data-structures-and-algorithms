@@ -1,4 +1,4 @@
-const {Animal, AnimalShelter} = require('./animal-shelter.js');
+const {Animal, AnimalShelter} = require('./index');
 
 test('Test enqueue function', () => {
   let shelter = new AnimalShelter();

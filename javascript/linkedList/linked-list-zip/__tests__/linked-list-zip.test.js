@@ -1,5 +1,5 @@
 'use strict';
-const LinkedList = require('../linked-list-zip.js');
+const LinkedList = require('../index');
 
 // Test 1: Standard case with two lists of equal length
 let list1 = new LinkedList();

@@ -4,7 +4,7 @@ const { HashMap } = require('../hashtable/index');
 
 const joinTables = (left, right) => {
   if (left instanceof HashMap && right instanceof HashMap) {
-    let keys = left.keys();
+    let keys = left.getKeys();
     let result = [];
 
     for (let i = 0; i < keys.length; i++) {

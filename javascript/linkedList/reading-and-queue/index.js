@@ -1,7 +1,7 @@
 class Node {
-  constructor(value = null, next = null) {
+  constructor(value) {
     this.value = value;
-    this.next = next;
+    this.next = null;
   }
 }
 
@@ -12,26 +12,20 @@ class Stack {
 
   push(value) {
     const node = new Node(value);
-    if (this.top !== null) {
-      node.next = this.top;
-    }
+    node.next = this.top;
     this.top = node;
   }
 
   pop() {
-    if (this.top === null) {
-      throw new Error("Cannot pop from an empty stack.");
+    const node = this.top;
+    if (node) {
+      this.top = node.next;
     }
-    const value = this.top.value;
-    this.top = this.top.next;
-    return value;
+    return node;
   }
 
   peek() {
-    if (this.top === null) {
-      throw new Error("Cannot peek at an empty stack.");
-    }
-    return this.top.value;
+    return this.top;
   }
 
   isEmpty() {
@@ -41,38 +35,33 @@ class Stack {
 
 class Queue {
   constructor() {
-    this.front = null;
-    this.rear = null;
+    this.front = this.rear = null;
   }
 
   enqueue(value) {
     const node = new Node(value);
-    if (this.rear !== null) {
+    if (this.rear) {
       this.rear.next = node;
     }
     this.rear = node;
-    if (this.front === null) {
+    if (!this.front) {
       this.front = node;
     }
   }
 
   dequeue() {
-    if (this.front === null) {
-      throw new Error("Cannot dequeue from an empty queue.");
+    const node = this.front;
+    if (node) {
+      this.front = node.next;
     }
-    const value = this.front.value;
-    this.front = this.front.next;
-    if (this.front === null) {
+    if (!this.front) {
       this.rear = null;
     }
-    return value;
+    return node;
   }
 
   peek() {
-    if (this.front === null) {
-      throw new Error("Cannot peek at an empty queue.");
-    }
-    return this.front.value;
+    return this.front;
   }
 
   isEmpty() {
