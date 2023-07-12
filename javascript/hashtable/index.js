@@ -1,14 +1,20 @@
-"use strict";
+'use strict';
 
-const { LinkedList } = require("../linkedList/linked-list/index.js");
+const { LinkedList } = require('../linkedList/linked-list/index.js');
 
 class HashMap {
   constructor(capacity) {
     this.capacity = capacity;
     this.storage = new Array(capacity);
+    this.calculateHash = this.calculateHash.bind(this);
+    this.insert = this.insert.bind(this);
+    this.retrieve = this.retrieve.bind(this);
+    this.contains = this.contains.bind(this);
+    this.getKeys = this.getKeys.bind(this);
+    this.set = this.set.bind(this);
   }
 
-  calculateHash = (key) => {
+  calculateHash(key) {
     let keyStr = `${key}`;
     let spreadKey = [...keyStr];
     let hashedKeys = [];
@@ -21,19 +27,37 @@ class HashMap {
       (hashedKeys.reduce((prev, curr) => prev * curr, 1) * 599) %
       this.storage.length
     );
-  };
+  }
 
-  insert = (key, value) => {
+  insert(key, value) {
     let hash = this.calculateHash(key);
 
     if (!this.storage[hash]) {
-      this.storage[hash] = new LinkedList({ [key]: value });
-    } else {
-      this.storage[hash].append({ [key]: value });
+      this.storage[hash] = new LinkedList();
     }
-  };
+    this.storage[hash].append({ [key]: value });
+  }
 
-  retrieve = (key) => {
+  set(key, value) {
+    let hash = this.calculateHash(key);
+
+    if (!this.storage[hash]) {
+      this.storage[hash] = new LinkedList();
+    }
+
+    let currentNode = this.storage[hash].head;
+    while (currentNode) {
+      if (Object.keys(currentNode.value)[0] === key) {
+        currentNode.value[key] = value;
+        return;
+      }
+      currentNode = currentNode.next;
+    }
+
+    this.storage[hash].append({ [key]: value });
+  }
+
+  retrieve(key) {
     let hash = this.calculateHash(key);
 
     if (!this.storage[hash]) return null;
@@ -45,9 +69,9 @@ class HashMap {
       if (currentNode.next) currentNode = currentNode.next;
       else return null;
     }
-  };
+  }
 
-  contains = (key) => {
+  contains(key) {
     let hash = this.calculateHash(key);
 
     if (!this.storage[hash]) return false;
@@ -59,9 +83,9 @@ class HashMap {
       if (currentNode.next) currentNode = currentNode.next;
       else return false;
     }
-  };
+  }
 
-  getKeys = () => {
+  getKeys() {
     let keys = [];
 
     this.storage.forEach((storageItem) => {
@@ -69,7 +93,7 @@ class HashMap {
         let currentNode = storageItem.head;
 
         while (currentNode) {
-          let keysInNode = Object.keys(storageItem.head.value);
+          let keysInNode = Object.keys(currentNode.value);
 
           keysInNode.forEach((key) => {
             if (!keys.includes(key)) keys.push(key);
@@ -82,7 +106,7 @@ class HashMap {
     });
 
     return keys;
-  };
+  }
 }
 
 module.exports = {

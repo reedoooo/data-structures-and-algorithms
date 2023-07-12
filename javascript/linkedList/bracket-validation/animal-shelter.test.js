@@ -1,4 +1,4 @@
-const validateBrackets = require('./index.js');
+const {validateBrackets} = require('./index.js');
 
 describe('validateBrackets', () => {
 

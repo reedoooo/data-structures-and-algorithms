@@ -1,5 +1,5 @@
-const Graph = require('../index');  // Assuming you have a 'graph' module.
-const { businessTrip } = require('./businessTrip'); // Assuming businessTrip is in its own module.
+const { Graph } = require('../index'); // Assuming you have a 'graph' module.
+const { businessTrip } = require('./index'); // Assuming businessTrip is in its own module.
 
 describe('businessTrip function', () => {
   let graph;
@@ -28,13 +28,13 @@ describe('businessTrip function', () => {
     expect(businessTrip(graph, ['A'])).toEqual(0);
   });
 
-  it('should handle null graph gracefully', () => {
+  it('should throw error when graph is null', () => {
     expect(() => {
       businessTrip(null, ['A', 'B']);
     }).toThrow('Graph is null or not defined');
   });
 
-  it('should handle null city array gracefully', () => {
+  it('should throw error when city array is null', () => {
     expect(() => {
       businessTrip(graph, null);
     }).toThrow('City array is null or not defined');

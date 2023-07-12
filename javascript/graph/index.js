@@ -1,4 +1,3 @@
-
 const { Stack, Queue } = require('../linkedList/reading-and-queue/index.js');
 
 class Vertex {
@@ -27,12 +26,29 @@ class Graph {
 
   addEdge(startVertex, endVertex, weight = 0) {
     if (!this.adjacencyList.has(startVertex)) {
-      console.error('startVertex argument is not in adjacencyList');
+      throw new Error('startVertex argument is not in adjacencyList');
     } else if (!this.adjacencyList.has(endVertex)) {
-      console.error('endVertex argument is not in adjacencyList');
+      throw new Error('endVertex argument is not in adjacencyList');
     }
     const newEdge = new Edge(endVertex, weight);
     this.adjacencyList.get(startVertex).push(newEdge);
+  }
+  getEdge(startVertex, endVertex) {
+    if (
+      !this.adjacencyList.has(startVertex) ||
+      !this.adjacencyList.has(endVertex)
+    ) {
+      return null;
+    }
+
+    const edges = this.adjacencyList.get(startVertex);
+    for (let i = 0; i < edges.length; i++) {
+      if (edges[i].vertex === endVertex) {
+        return edges[i];
+      }
+    }
+
+    return null;
   }
 
   getVertices() {
@@ -50,7 +66,6 @@ class Graph {
   breadthFirst() {
     const vertices = this.getVertices();
     if (vertices.length === 0) {
-      console.error('Graph has no vertices. Cannot execute breadth-first traversal');
       return [];
     }
     const queue = new Queue();
@@ -75,6 +90,10 @@ class Graph {
   }
 
   depthFirst(vertex) {
+    if (!this.adjacencyList.has(vertex)) {
+      return [];
+    }
+
     const stack = new Stack();
     const visited = [];
 

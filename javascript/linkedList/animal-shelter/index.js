@@ -20,9 +20,9 @@ class AnimalShelter {
   }
   dequeue(pref) {
     if (pref === 'dog') {
-      return this.dogs.shift();
+      return this.dogs.length > 0 ? this.dogs.shift() : null;
     } else if (pref === 'cat') {
-      return this.cats.shift();
+      return this.cats.length > 0 ? this.cats.shift() : null;
     } else {
       return null;
     }

@@ -5,6 +5,7 @@ A coding challenge that involves traversing a k-ary tree and generating a new on
 ## Challenge Description
 
 Given a k-ary tree where each node has a numeric value, we need to traverse this tree and create a new tree of the same structure. The node values in the new tree should be altered based on the following rules:
+
 - If the value is divisible by 3, replace the value with "Fizz"
 - If the value is divisible by 5, replace the value with "Buzz"
 - If the value is divisible by both 3 and 5, replace the value with "FizzBuzz"
@@ -19,6 +20,7 @@ For a visual representation of the problem and the solution approach, please ref
 ## Approach & Efficiency
 
 The solution follows these steps:
+
 1. Initialize a new tree with the same structure as the original tree.
 2. Traverse the original tree.
 3. For each node, check if the value is divisible by 3, 5, or both, and apply the rules to set the value of the corresponding node in the new tree.

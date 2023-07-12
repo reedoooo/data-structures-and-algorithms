@@ -1,4 +1,4 @@
-const { reverseLinkedList, ListNode } = require("./path_to_your_file"); // replace with the actual path
+const { reverseLinkedList, ListNode } = require("../index"); // replace with the actual path
 
 describe("Testing reverseLinkedList function", () => {
   test("Reversing a normal list", () => {

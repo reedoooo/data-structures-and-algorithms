@@ -1,5 +1,5 @@
 'use strict';
-const insertShiftArray = require('../insert-shift-array.js');
+const insertShiftArray = require('../index.js');
 
 describe('insertShiftArray', () => {
   it('should add a value in the middle of an array', () => {

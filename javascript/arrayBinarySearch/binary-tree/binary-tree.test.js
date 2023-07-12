@@ -1,4 +1,4 @@
-const { BinaryTree, Node } = require("./BinaryTree"); // Assuming your file is named BinaryTree.js
+const { BinaryTree, Node } = require("./index"); // Assuming your file is named BinaryTree.js
 
 describe("BinaryTree", () => {
   test("find_maximum_value should return the maximum value in the tree", () => {
