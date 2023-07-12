@@ -3,17 +3,18 @@ const { businessTrip } = require('./index'); // Assuming businessTrip is in its 
 
 describe('businessTrip function', () => {
   let graph;
+  let A, B, C; // Added these variables to store Vertex objects
   beforeEach(() => {
     graph = new Graph();
-    const A = graph.addVertex('A');
-    const B = graph.addVertex('B');
-    const C = graph.addVertex('C');
+    A = graph.addVertex('A');
+    B = graph.addVertex('B');
+    C = graph.addVertex('C');
     graph.addEdge(A, B, 100);
     graph.addEdge(B, C, 200);
   });
 
   it('should return the correct total cost for a valid trip', () => {
-    expect(businessTrip(graph, ['A', 'B', 'C'])).toEqual(300);
+    expect(businessTrip(graph, [A, B, C])).toEqual(300); // passing Vertex objects
   });
 
   it('should return null for an impossible trip', () => {

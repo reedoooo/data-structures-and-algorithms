@@ -18,10 +18,21 @@ class Graph {
     this.adjacencyList = new Map();
   }
 
+  // addVertex(value) {
+  //   const newVertex = new Vertex(value);
+  //   this.adjacencyList.set(newVertex, []);
+  //   return newVertex;
+  // }
+
   addVertex(value) {
     const newVertex = new Vertex(value);
-    this.adjacencyList.set(newVertex, []);
-    return newVertex;
+
+    // Check if the vertex is already present
+    if (!this.adjacencyList.has(newVertex)) {
+      this.adjacencyList.set(newVertex, []);
+    }
+
+    return newVertex; // Return the vertex object added to the adjacency list
   }
 
   addEdge(startVertex, endVertex, weight = 0) {
@@ -30,9 +41,14 @@ class Graph {
     } else if (!this.adjacencyList.has(endVertex)) {
       throw new Error('endVertex argument is not in adjacencyList');
     }
-    const newEdge = new Edge(endVertex, weight);
-    this.adjacencyList.get(startVertex).push(newEdge);
+
+    const edgeToStart = new Edge(startVertex, weight);
+    const edgeToEnd = new Edge(endVertex, weight);
+
+    this.adjacencyList.get(startVertex).push(edgeToEnd);
+    this.adjacencyList.get(endVertex).push(edgeToStart);
   }
+
   getEdge(startVertex, endVertex) {
     if (
       !this.adjacencyList.has(startVertex) ||
@@ -63,57 +79,54 @@ class Graph {
     return this.adjacencyList.size;
   }
 
-  breadthFirst() {
-    const vertices = this.getVertices();
-    if (vertices.length === 0) {
-      return [];
-    }
+  breadthFirst(startVertex) {
     const queue = new Queue();
-    const visited = [];
-    queue.enqueue(vertices[0]);
+    const visited = new Set();
+
+    queue.enqueue(startVertex);
 
     while (!queue.isEmpty()) {
       const dqVertex = queue.dequeue().value;
-      const dqNeighbors = this.getNeighbors(dqVertex);
 
-      if (dqNeighbors.length > 0) {
-        dqNeighbors.forEach((neighbor) => {
-          if (!visited.includes(neighbor.vertex)) {
-            visited.push(neighbor.vertex);
-            queue.enqueue(neighbor.vertex);
-          }
-        });
+      if (!visited.has(dqVertex)) {
+        visited.add(dqVertex);
+        const dqNeighbors = this.getNeighbors(dqVertex);
+
+        if (dqNeighbors.length > 0) {
+          dqNeighbors.forEach((neighbor) => {
+            if (!visited.has(neighbor.vertex)) {
+              queue.enqueue(neighbor.vertex);
+            }
+          });
+        }
       }
     }
-
-    return visited;
+    return Array.from(visited).map((vertex) => vertex.value);
   }
 
-  depthFirst(vertex) {
-    if (!this.adjacencyList.has(vertex)) {
-      return [];
-    }
-
+  depthFirst(startVertex) {
     const stack = new Stack();
-    const visited = [];
+    const visited = new Set();
 
-    stack.push(vertex);
+    stack.push(startVertex);
 
     while (!stack.isEmpty()) {
-      const popped = stack.pop();
-      const neighbors = this.getNeighbors(popped.value);
+      const popped = stack.pop().value;
 
-      if (neighbors.length) {
-        neighbors.forEach((neighbor) => {
-          if (!visited.includes(neighbor.vertex.value)) {
-            visited.push(neighbor.vertex.value);
-            stack.push(neighbor.vertex);
-          }
-        });
+      if (!visited.has(popped)) {
+        visited.add(popped);
+        const neighbors = this.getNeighbors(popped);
+
+        if (neighbors.length) {
+          neighbors.forEach((neighbor) => {
+            if (!visited.has(neighbor.vertex)) {
+              stack.push(neighbor.vertex);
+            }
+          });
+        }
       }
     }
-
-    return visited;
+    return Array.from(visited).map((vertex) => vertex.value);
   }
 }
 

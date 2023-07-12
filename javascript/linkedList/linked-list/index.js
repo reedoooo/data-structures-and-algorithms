@@ -23,6 +23,7 @@ class LinkedList {
       node.next = this.head; // Set the new Node's next to current head
     }
     this.head = node; // Set new Node as head of the list
+    return this;
   }
 
   append(value) {

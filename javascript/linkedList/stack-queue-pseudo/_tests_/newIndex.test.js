@@ -1,4 +1,4 @@
-const Queue = require('../newIndex'); // Assuming the Queue is exported from a file named Queue.js
+const {Queue} = require('../newIndex'); // Assuming the Queue is exported from a file named Queue.js
 
 describe('Queue', () => {
   let queue;
@@ -17,8 +17,8 @@ describe('Queue', () => {
     expect(queue.dequeue()).toBe('c');
   });
 
-  test('returns undefined on dequeue when the queue is empty', () => {
-    expect(queue.dequeue()).toBeUndefined();
+  test('returns null on dequeue when the queue is empty', () => {
+    expect(queue.dequeue()).toBeNull(); // changed from toBeUndefined() to toBeNull()
   });
 
   test('enqueues and dequeues items correctly after mixed operations', () => {

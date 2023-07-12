@@ -12,6 +12,7 @@ class HashMap {
     this.contains = this.contains.bind(this);
     this.getKeys = this.getKeys.bind(this);
     this.set = this.set.bind(this);
+    this.nullKey = undefined;
   }
 
   calculateHash(key) {
@@ -39,6 +40,11 @@ class HashMap {
   }
 
   set(key, value) {
+    if (key === null) {
+      this.nullKey = value;
+      return;
+    }
+
     let hash = this.calculateHash(key);
 
     if (!this.storage[hash]) {
@@ -57,21 +63,11 @@ class HashMap {
     this.storage[hash].append({ [key]: value });
   }
 
-  retrieve(key) {
-    let hash = this.calculateHash(key);
-
-    if (!this.storage[hash]) return null;
-
-    let currentNode = this.storage[hash].head;
-    while (currentNode) {
-      if (currentNode.value[key]) return currentNode.value;
-
-      if (currentNode.next) currentNode = currentNode.next;
-      else return null;
-    }
-  }
-
   contains(key) {
+    if (key === null) {
+      return this.nullKey !== undefined;
+    }
+
     let hash = this.calculateHash(key);
 
     if (!this.storage[hash]) return false;
@@ -85,9 +81,27 @@ class HashMap {
     }
   }
 
+
+  retrieve(key) {
+    let hash = this.calculateHash(key);
+
+    if (!this.storage[hash]) return null;
+
+    let currentNode = this.storage[hash].head;
+    while (currentNode) {
+      if (currentNode.value[key]) return currentNode.value[key]; // Modified this line
+
+      if (currentNode.next) currentNode = currentNode.next;
+      else return null;
+    }
+  }
+
   getKeys() {
     let keys = [];
 
+    if (this.nullKey !== undefined) {
+      keys.push(null);
+    }
     this.storage.forEach((storageItem) => {
       if (storageItem && storageItem.head) {
         let currentNode = storageItem.head;

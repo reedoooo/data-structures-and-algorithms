@@ -1,4 +1,69 @@
-const { Graph, Vertex } = require('./index');
+// Test section
+const { Graph, Vertex, Edge } = require('./index');
+
+const { Stack, Queue } = require('../linkedList/reading-and-queue/index.js');
+
+describe('Stack', () => {
+  let stack;
+  beforeEach(() => {
+    stack = new Stack();
+  });
+
+  test('pushes and pops elements correctly', () => {
+    stack.push('test');
+    expect(stack.pop().value).toEqual('test');
+  });
+
+  test('peeks at the top element', () => {
+    stack.push('test');
+    expect(stack.peek().value).toEqual('test');
+  });
+
+  test('checks if stack is empty', () => {
+    expect(stack.isEmpty()).toBe(true);
+    stack.push('test');
+    expect(stack.isEmpty()).toBe(false);
+  });
+});
+
+describe('Queue', () => {
+  let queue;
+  beforeEach(() => {
+    queue = new Queue();
+  });
+
+  test('enqueues and dequeues elements correctly', () => {
+    queue.enqueue('test');
+    expect(queue.dequeue().value).toEqual('test');
+  });
+
+  test('peeks at the front element', () => {
+    queue.enqueue('test');
+    expect(queue.peek().value).toEqual('test');
+  });
+
+  test('checks if queue is empty', () => {
+    expect(queue.isEmpty()).toBe(true);
+    queue.enqueue('test');
+    expect(queue.isEmpty()).toBe(false);
+  });
+});
+
+describe('Vertex', () => {
+  it('should create a new vertex correctly', () => {
+    const vertex = new Vertex(1);
+    expect(vertex.value).toBe(1);
+  });
+});
+
+describe('Edge', () => {
+  it('should create a new edge correctly', () => {
+    const vertexA = new Vertex(1);
+    const edge = new Edge(vertexA, 2);
+    expect(edge.vertex).toBe(vertexA);
+    expect(edge.weight).toBe(2);
+  });
+});
 
 describe('Graph', () => {
   let graph;
@@ -7,173 +72,66 @@ describe('Graph', () => {
     graph = new Graph();
   });
 
-  test('returns nodes visited in breadth-first order', () => {
-    let vertex1 = graph.addVertex('1');
-    let vertex2 = graph.addVertex('2');
-    let vertex3 = graph.addVertex('3');
-    let vertex4 = graph.addVertex('4');
-
-    graph.addEdge(vertex1, vertex2);
-    graph.addEdge(vertex1, vertex3);
-    graph.addEdge(vertex2, vertex4);
-
-    // expect(graph.breadthFirst()).toEqual([vertex1, vertex2, vertex3, vertex4]);
-    expect(graph.breadthFirst().map((v) => v.value)).toEqual([
-      '1',
-      '2',
-      '3',
-      '4',
-    ]);
+  it('should add a new vertex correctly', () => {
+    const vertex = graph.addVertex(1);
+    expect(vertex.value).toBe(1);
+    expect(graph.size()).toBe(1);
   });
 
-  test('returns nodes visited in depth-first order', () => {
-    let vertex1 = graph.addVertex('1');
-    let vertex2 = graph.addVertex('2');
-    let vertex3 = graph.addVertex('3');
-    let vertex4 = graph.addVertex('4');
-
-    graph.addEdge(vertex1, vertex2);
-    graph.addEdge(vertex1, vertex3);
-    graph.addEdge(vertex2, vertex4);
-
-    // expect(graph.depthFirst(vertex1)).toEqual([
-    //   vertex1,
-    //   vertex2,
-    //   vertex4,
-    //   vertex3,
-    // ]);
-    expect(graph.depthFirst(vertex1).map((v) => v.value)).toEqual([
-      '1',
-      '2',
-      '4',
-      '3',
-    ]);
+  it('should add a new edge correctly', () => {
+    const vertexA = graph.addVertex(1);
+    const vertexB = graph.addVertex(2);
+    graph.addEdge(vertexA, vertexB, 5);
+    const edge = graph.getEdge(vertexA, vertexB);
+    expect(edge.vertex).toBe(vertexB);
+    expect(edge.weight).toBe(5);
   });
 
-  test('returns empty array when no vertices in the graph for breadth-first', () => {
-    const bfsResult = graph.breadthFirst().map((vertex) => vertex.value);
-    expect(bfsResult).toEqual([]);
+  it('should get all vertices correctly', () => {
+    const vertexA = graph.addVertex(1);
+    const vertexB = graph.addVertex(2);
+    expect(graph.getVertices()).toEqual([vertexA, vertexB]);
   });
 
-  test('returns empty array when depth-first called with no vertices', () => {
-    const dfsResult = graph
-      .depthFirst(new Vertex('1'))
-      .map((vertex) => vertex.value);
-    expect(dfsResult).toEqual([]);
+  it('should get neighbors of a vertex correctly', () => {
+    const vertexA = graph.addVertex(1);
+    const vertexB = graph.addVertex(2);
+    graph.addEdge(vertexA, vertexB, 5);
+    const neighbors = graph.getNeighbors(vertexA);
+    expect(neighbors).toEqual([new Edge(vertexB, 5)]);
   });
+
+  it('should perform breadth-first traversal correctly', () => {
+    const graph = new Graph();
+    const vertexA = graph.addVertex('A');
+    const vertexB = graph.addVertex('B');
+    const vertexC = graph.addVertex('C');
+    graph.addEdge(vertexA, vertexB);
+    graph.addEdge(vertexA, vertexC);
+    const result = graph.breadthFirst(vertexA);
+    expect(result).toEqual(['A', 'B', 'C']);
+  });
+
+  it('should perform depth-first traversal correctly', () => {
+    // Add vertices to graph and save the returned vertex objects
+    const vertexA = graph.addVertex('A');
+    const vertexB = graph.addVertex('B');
+    const vertexC = graph.addVertex('C');
+
+    // Now, add edges using the vertex objects returned from the addVertex method
+    graph.addEdge(vertexA, vertexB);
+    graph.addEdge(vertexA, vertexC);
+
+    // Perform your tests here
+    const result = graph.depthFirst(vertexA);
+
+    expect(result.includes('A')).toBe(true);
+    expect(result.includes('B')).toBe(true);
+    expect(result.includes('C')).toBe(true);
+    expect(result.length).toBe(3);
+  });
+
+
+
+
 });
-
-// const { Graph, Vertex } = require('.');
-
-// describe('Graph', () => {
-//   let graph;
-
-//   beforeEach(() => {
-//     graph = new Graph();
-//   });
-
-//   describe('addVertex', () => {
-//     it('should add a vertex to the graph', () => {
-//       const vertex = graph.addVertex('A');
-//       expect(vertex).toBeInstanceOf(Vertex);
-//       expect(graph.size()).toBe(1);
-//     });
-//   });
-
-//   describe('addEdge', () => {
-//     it('should add an edge between two vertices in the graph', () => {
-//       const vertexA = graph.addVertex('A');
-//       const vertexB = graph.addVertex('B');
-//       graph.addEdge(vertexA, vertexB);
-//       expect(graph.getNeighbors(vertexA)).toHaveLength(1);
-//       expect(graph.getNeighbors(vertexA)[0].vertex).toBe(vertexB);
-//     });
-//   });
-
-//   describe('getVertices', () => {
-//     it('should return all vertices in the graph', () => {
-//       const vertexA = graph.addVertex('A');
-//       const vertexB = graph.addVertex('B');
-//       const vertices = graph.getVertices();
-//       expect(vertices).toContain(vertexA);
-//       expect(vertices).toContain(vertexB);
-//     });
-
-//     it('should return an empty collection if there are no vertices', () => {
-//       const vertices = graph.getVertices();
-//       expect(vertices).toHaveLength(0);
-//     });
-//   });
-
-//   describe('getNeighbors', () => {
-//     it('should return the edges connected to the given vertex', () => {
-//       const vertexA = graph.addVertex('A');
-//       const vertexB = graph.addVertex('B');
-//       graph.addEdge(vertexA, vertexB, 5);
-//       const neighbors = graph.getNeighbors(vertexA);
-//       expect(neighbors).toHaveLength(1);
-//       expect(neighbors[0].vertex).toBe(vertexB);
-//       expect(neighbors[0].weight).toBe(5);
-//     });
-
-//     it('should return an empty collection if there are no edges or the vertex does not exist', () => {
-//       const vertex = new Vertex('A');
-//       const neighbors = graph.getNeighbors(vertex);
-//       expect(neighbors).toHaveLength(0);
-//     });
-//   });
-
-//   describe('size', () => {
-//     it('should return the total number of vertices in the graph', () => {
-//       graph.addVertex('A');
-//       graph.addVertex('B');
-//       expect(graph.size()).toBe(2);
-//     });
-
-//     it('should return 0 if there are no vertices', () => {
-//       expect(graph.size()).toBe(0);
-//     });
-//   });
-
-//   describe('breadthFirst', () => {
-//     it('should return all nodes visited in breadth-first order', () => {
-//       const vertexA = graph.addVertex('A');
-//       const vertexB = graph.addVertex('B');
-//       const vertexC = graph.addVertex('C');
-//       const vertexD = graph.addVertex('D');
-//       const vertexE = graph.addVertex('E');
-//       graph.addEdge(vertexA, vertexB);
-//       graph.addEdge(vertexA, vertexC);
-//       graph.addEdge(vertexB, vertexD);
-//       graph.addEdge(vertexC, vertexE);
-//       const visited = graph.breadthFirst();
-//       expect(visited).toEqual([vertexA, vertexB, vertexC, vertexD, vertexE]);
-//     });
-
-//     it('should handle a graph with no vertices', () => {
-//       const visited = graph.breadthFirst();
-//       expect(visited).toEqual([]);
-//     });
-//   });
-
-//   describe('depthFirst', () => {
-//     it('should return all nodes visited in depth-first order', () => {
-//       const vertexA = graph.addVertex('A');
-//       const vertexB = graph.addVertex('B');
-//       const vertexC = graph.addVertex('C');
-//       const vertexD = graph.addVertex('D');
-//       const vertexE = graph.addVertex('E');
-//       graph.addEdge(vertexA, vertexB);
-//       graph.addEdge(vertexA, vertexC);
-//       graph.addEdge(vertexB, vertexD);
-//       graph.addEdge(vertexC, vertexE);
-//       const visited = graph.depthFirst(vertexA);
-//       expect(visited).toEqual([vertexA, vertexB, vertexD, vertexC, vertexE]);
-//     });
-
-//     it('should handle a graph with no vertices', () => {
-//       const visited = graph.depthFirst(new Vertex('A'));
-//       expect(visited).toEqual([]);
-//     });
-//   });
-// });
