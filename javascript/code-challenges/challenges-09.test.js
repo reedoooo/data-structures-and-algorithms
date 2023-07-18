@@ -19,9 +19,18 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
+const courseInfo = {
+  name: 'Code 301',
+  duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
+  topics: [
+    'SMACSS',
+    'APIs',
+    'NodeJS',
+    'SQL',
+    'jQuery',
+    'functional programming',
+  ],
+  finalExam: true,
 };
 
 const getCourseKeys = (obj) => {
@@ -36,13 +45,16 @@ Write a function named checkValues that takes in an object and a value and retur
 
 ------------------------------------------------------------------------------------------------ */
 
+// const checkValues = (obj, value) => {
+//   for (const key in obj) {
+//     if (obj[key] === value) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
 const checkValues = (obj, value) => {
-  for (const key in obj) {
-    if (obj[key] === value) {
-      return true;
-    }
-  }
-  return false;
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,7 +88,9 @@ const formattedContacts = Object.entries(contacts).map(
 
 console.log(formattedContacts);
 
-
+const updateNumbers = (obj) => {
+  return Object.entries(obj).map(([name, number]) => `${name}: ${number}`);
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -127,18 +141,21 @@ const characters = [
   },
 ];
 
+// const getHouses = (arr) => {
+//   let houses = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].house && !houses.includes(arr[i].house)) {
+//       houses.push(arr[i].house);
+//     }
+//   }
+
+//   return houses;
+// };
+
 const getHouses = (arr) => {
-  let houses = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].house && !houses.includes(arr[i].house)) {
-      houses.push(arr[i].house);
-    }
-  }
-
-  return houses;
+  return arr.map((character) => character.house);
 };
-
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -152,15 +169,18 @@ hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
+// const hasChildrenValues = (arr, character) => {
+//   const target = arr.find((char) => char.name === character);
+//   if (target && Object.values(target).includes(target.children)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 const hasChildrenValues = (arr, character) => {
-  const target = arr.find((char) => char.name === character);
-  if (target && Object.values(target).includes(target.children)) {
-    return true;
-  } else {
-    return false;
-  }
+  let characterObject = arr.find((obj) => obj.name === character);
+  return characterObject.children ? true : false;
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -171,17 +191,18 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let characterObject = arr.find((obj) => obj.name === character);
+  return characterObject && Object.entries(characterObject).some(([key, value]) => key === 'children' && value.length > 0);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
 Write a function named totalCharacters that takes in an array and returns the number of characters in the array.
 ------------------------------------------------------------------------------------------------ */
 
+// CHALLENGE 8
 const totalCharacters = (arr) => {
-  // Solution code here...
+  return arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -195,9 +216,16 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
-  const sizes = [];
-  // Solution code here...
-  return sizes;
+  let houseSizes = arr.reduce((acc, character) => {
+    if (acc[character.house]) {
+      acc[character.house]++;
+    } else {
+      acc[character.house] = 1;
+    }
+    return acc;
+  }, {});
+
+  return Object.entries(houseSizes).map(([house, members]) => ({house, members}));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -219,9 +247,19 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
-  const survivors = [];
-  // Solution code here...
-  return survivors;
+  let houseSizes = arr.reduce((acc, character) => {
+    if (deceasedSpouses.includes(character.spouse)) {
+      return acc;
+    }
+    if (acc[character.house]) {
+      acc[character.house]++;
+    } else {
+      acc[character.house] = 1;
+    }
+    return acc;
+  }, {});
+
+  return Object.entries(houseSizes).map(([house, members]) => ({house, members}));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -246,7 +284,12 @@ describe('Testing challenge 1', () => {
 
 describe('Testing challenge 2', () => {
   test('It should return the keys from an object', () => {
-    expect(getCourseKeys(courseInfo)).toStrictEqual(['name', 'duration', 'topics', 'finalExam']);
+    expect(getCourseKeys(courseInfo)).toStrictEqual([
+      'name',
+      'duration',
+      'topics',
+      'finalExam',
+    ]);
   });
 });
 
@@ -265,10 +308,12 @@ describe('Testing challenge 4', () => {
     const startingObj = {
       'Grace Hopper': '222-303-5938',
       'Ada Lovelace': '222-349-9842',
-      'Alan Turing': '222-853-5933'
+      'Alan Turing': '222-853-5933',
     };
 
-    expect(updateNumbers(startingObj).includes('Grace Hopper: 222-303-5938')).toBe(true);
+    expect(
+      updateNumbers(startingObj).includes('Grace Hopper: 222-303-5938')
+    ).toBe(true);
   });
 });
 
@@ -278,7 +323,6 @@ describe('Testing challenge 5', () => {
     expect(getHouses(characters).length).toStrictEqual(7);
   });
 });
-
 
 describe('Testing challenge 6', () => {
   test('It should return true for characters that have children', () => {
@@ -308,13 +352,19 @@ xdescribe('Testing challenge 8', () => {
 
 xdescribe('Testing challenge 9', () => {
   test('It should return an object for each house containing the name and size', () => {
-    expect(houseSize(characters)[1]).toStrictEqual({ house: 'Arryn', members: 3 });
+    expect(houseSize(characters)[1]).toStrictEqual({
+      house: 'Arryn',
+      members: 3,
+    });
     expect(houseSize(characters).length).toStrictEqual(7);
   });
 });
 
 xdescribe('Testing challenge 10', () => {
   test('It should not include any deceased spouses', () => {
-    expect(houseSurvivors(characters)[2]).toStrictEqual({ house: 'Lannister', members: 4 });
+    expect(houseSurvivors(characters)[2]).toStrictEqual({
+      house: 'Lannister',
+      members: 4,
+    });
   });
 });

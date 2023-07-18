@@ -27,7 +27,23 @@ describe('repeatedWord', () => {
 
   it('should return the first repeated word even if it has different capitalization', () => {
     const input = 'The quick brown fox jumps over the lazy dog. The Quick brown Fox jumps over the Lazy dog.';
-    const expectedOutput = 'The';
+    const expectedOutput = 'the';
     expect(repeatedWord(input)).toEqual(expectedOutput);
+  });
+
+  it('should return "No repeated words found" for an empty string', () => {
+    const input = '';
+    const expectedOutput = 'No repeated words found';
+    expect(repeatedWord(input)).toEqual(expectedOutput);
+  });
+
+  it('throws error when input is not a string', () => {
+    expect(() => repeatedWord(true)).toThrow('Input must be a string');
+    expect(() => repeatedWord(0)).toThrow('Input must be a string');
+    expect(() => repeatedWord(-1)).toThrow('Input must be a string');
+    expect(() => repeatedWord(null)).toThrow('Input must be a string');
+    expect(() => repeatedWord(undefined)).toThrow('Input must be a string');
+    expect(() => repeatedWord([])).toThrow('Input must be a string');
+    expect(() => repeatedWord({})).toThrow('Input must be a string');
   });
 });

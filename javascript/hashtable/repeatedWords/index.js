@@ -1,4 +1,8 @@
 function repeatedWord(string) {
+  if (typeof string !== 'string') {
+    throw new Error('Input must be a string');
+  }
+
   class HashTable {
     constructor(size) {
       this.buckets = new Array(size);
@@ -35,7 +39,7 @@ function repeatedWord(string) {
   }
 
   let hashedString = new HashTable(100);
-  let cleanString = string.replace(/[^a-zA-Z ]+/g, '');
+  let cleanString = string.toLowerCase().replace(/[^a-zA-Z ]+/g, '');
   let stringArr = cleanString.split(' ');
 
   for (let i = 0; i < stringArr.length; i++) {

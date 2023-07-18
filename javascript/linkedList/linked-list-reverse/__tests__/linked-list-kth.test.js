@@ -1,7 +1,7 @@
-const { reverseLinkedList, ListNode } = require("../index"); // replace with the actual path
+const { reverseLinkedList, ListNode } = require('../index'); // replace with the actual path
 
-describe("Testing reverseLinkedList function", () => {
-  test("Reversing a normal list", () => {
+describe('Testing reverseLinkedList function', () => {
+  test('Reversing a normal list', () => {
     const node4 = new ListNode(4);
     const node3 = new ListNode(3, node4);
     const node2 = new ListNode(2, node3);
@@ -13,14 +13,14 @@ describe("Testing reverseLinkedList function", () => {
     expect(reversedHead.next.next.next.val).toBe(1);
   });
 
-  test("Reversing a list with single node", () => {
+  test('Reversing a list with single node', () => {
     const node1 = new ListNode(1);
     const reversedHead = reverseLinkedList(node1);
     expect(reversedHead.val).toBe(1);
     expect(reversedHead.next).toBeNull();
   });
 
-  test("Reversing an empty list", () => {
+  test('Reversing an empty list', () => {
     const reversedHead = reverseLinkedList(null);
     expect(reversedHead).toBeNull();
   });

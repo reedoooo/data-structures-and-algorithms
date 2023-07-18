@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 function mostCommonWord(string) {
   if (typeof string !== 'string') {
     throw new Error('Input must be a string');

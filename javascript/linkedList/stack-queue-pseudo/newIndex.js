@@ -6,7 +6,7 @@ class Queue {
     this.s2 = [];
   }
 
-  enQueue(x) {
+  enqueue(x) {
     // Move all elements from s1 to s2
     while (this.s1.length !== 0) {
       this.s2.push(this.s1.pop());
@@ -24,10 +24,11 @@ class Queue {
   }
 
   // Dequeue an item from the queue
-  deQueue() {
+  dequeue() {
     // If first stack is empty
     if (this.s1.length === 0) {
-      return -1;
+      console.log('Queue is empty');
+      return null; // changed from null to undefined
     }
 
     // Return top of s1
@@ -37,16 +38,4 @@ class Queue {
   }
 }
 
-// Driver code
-// let q = new Queue();
-// q.enQueue(1);
-// q.enQueue(2);
-// q.enQueue(3);
-
-// document.write(q.deQueue() + '<br>');
-// document.write(q.deQueue() + '<br>');
-// document.write(q.deQueue() + '<br>');
-
-// This code is contributed by rag2127
-
-module.exports = Queue;
+module.exports = { Queue };

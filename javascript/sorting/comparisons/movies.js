@@ -1,55 +1,55 @@
 // Excerpt from https://github.com/erik-sytnyk/movies-list/blob/master/db.json
 const Movies = [
   {
-    title: "Beetlejuice",
+    title: 'Beetlejuice',
     year: 1988,
-    genres: ["Comedy", "Fantasy"],
+    genres: ['Comedy', 'Fantasy'],
   },
   {
-    title: "The Cotton Club",
+    title: 'The Cotton Club',
     year: 1984,
-    genres: ["Crime", "Drama", "Music"],
+    genres: ['Crime', 'Drama', 'Music'],
   },
   {
-    title: "The Shawshank Redemption",
+    title: 'The Shawshank Redemption',
     year: 1994,
-    genres: ["Crime", "Drama"],
+    genres: ['Crime', 'Drama'],
   },
   {
-    title: "Crocodile Dundee",
+    title: 'Crocodile Dundee',
     year: 1986,
-    genres: ["Adventure", "Comedy"],
+    genres: ['Adventure', 'Comedy'],
   },
   {
-    title: "Valkyrie",
+    title: 'Valkyrie',
     year: 2008,
-    genres: ["Drama", "History", "Thriller"],
+    genres: ['Drama', 'History', 'Thriller'],
   },
   {
-    title: "Ratatouille",
+    title: 'Ratatouille',
     year: 2007,
-    genres: ["Animation", "Comedy", "Family"],
+    genres: ['Animation', 'Comedy', 'Family'],
   },
   {
-    title: "City of God",
+    title: 'City of God',
     year: 2002,
-    genres: ["Crime", "Drama"],
+    genres: ['Crime', 'Drama'],
   },
   {
-    title: "Memento",
+    title: 'Memento',
     year: 2000,
-    genres: ["Mystery", "Thriller"],
+    genres: ['Mystery', 'Thriller'],
   },
   {
-    title: "The Intouchables",
+    title: 'The Intouchables',
     year: 2011,
-    genres: ["Biography", "Comedy", "Drama"],
+    genres: ['Biography', 'Comedy', 'Drama'],
   },
   {
-    title: "Stardust",
+    title: 'Stardust',
     year: 2007,
-    genres: ["Adventure", "Family", "Fantasy"],
+    genres: ['Adventure', 'Family', 'Fantasy'],
   },
 ];
 
-module.exports = Movies ;
+module.exports = Movies;

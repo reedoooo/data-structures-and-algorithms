@@ -23,11 +23,13 @@ function fizzBuzzTree(originalTree) {
   newTree.root = copyTreeStructure(originalTree.root); // Assign the root of the newTree to be a copy of the originalTree's structure
 
   function traverse(nodeOriginal, nodeNew) {
+    // Return immediately if nodeOriginal is null
+    if (!nodeOriginal) return;
     // Define a helper function traverse to traverse both the original and the new tree
     if (nodeOriginal.value % 3 === 0 && nodeOriginal.value % 5 === 0)
       // If the original node's value is divisible by both 3 and 5
-      nodeNew.value =
-        'FizzBuzz'; // Replace the new node's value with "FizzBuzz"
+      nodeNew.value = 'FizzBuzz';
+    // Replace the new node's value with "FizzBuzz"
     else if (nodeOriginal.value % 3 === 0)
       // If the original node's value is divisible by 3 only
       nodeNew.value = 'Fizz'; // Replace the new node's value with "Fizz"

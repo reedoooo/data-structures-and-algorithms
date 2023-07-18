@@ -1,65 +1,44 @@
-'use strict';
-const LinkedList = require('../index');
+const LinkedList = require('../index'); // adjust the path according to your file structure
 
-// Test 1: Standard case with two lists of equal length
-let list1 = new LinkedList();
-list1.append(1);
-list1.append(3);
-list1.append(2);
+describe('LinkedList', () => {
+  test('should append value to the list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
 
-let list2 = new LinkedList();
-list2.append(5);
-list2.append(9);
-list2.append(4);
+    let current = list.head;
+    expect(current.value).toEqual(1);
+    current = current.next;
+    expect(current.value).toEqual(2);
+    current = current.next;
+    expect(current.value).toEqual(3);
+  });
 
-let zippedList = LinkedList.zipLists(list1, list2);
+  test('should return a zipped list from two lists', () => {
+    const list1 = new LinkedList();
+    list1.append(1);
+    list1.append(3);
+    list1.append(2);
 
-console.log(JSON.stringify(zippedList)); // Should print {1} -> {5} -> {3} -> {9} -> {2} -> {4}
+    const list2 = new LinkedList();
+    list2.append(5);
+    list2.append(9);
+    list2.append(4);
 
-// Test 2: Lists of different lengths
-list1 = new LinkedList();
-list1.append(1);
-list1.append(3);
+    const zippedList = LinkedList.zipLists(list1, list2);
+    let current = zippedList.head;
 
-list2 = new LinkedList();
-list2.append(5);
-list2.append(9);
-list2.append(4);
-
-zippedList = LinkedList.zipLists(list1, list2);
-
-console.log(JSON.stringify(zippedList)); // Should print {1} -> {5} -> {3} -> {9} -> {4}
-
-// Test 3: One list is empty
-list1 = new LinkedList();
-
-list2 = new LinkedList();
-list2.append(5);
-list2.append(9);
-list2.append(4);
-
-zippedList = LinkedList.zipLists(list1, list2);
-
-console.log(JSON.stringify(zippedList)); // Should print {5} -> {9} -> {4}
-
-// Test 4: Both lists are empty
-list1 = new LinkedList();
-list2 = new LinkedList();
-
-zippedList = LinkedList.zipLists(list1, list2);
-
-console.log(JSON.stringify(zippedList)); // Should print {} (an empty list)
-
-// Test 5: One list has a single node
-list1 = new LinkedList();
-list1.append(1);
-
-list2 = new LinkedList();
-list2.append(5);
-list2.append(9);
-list2.append(4);
-
-zippedList = LinkedList.zipLists(list1, list2);
-
-console.log(JSON.stringify(zippedList)); // Should print {1} -> {5} -> {9} -> {4}
-
+    expect(current.value).toEqual(1);
+    current = current.next;
+    expect(current.value).toEqual(5);
+    current = current.next;
+    expect(current.value).toEqual(3);
+    current = current.next;
+    expect(current.value).toEqual(9);
+    current = current.next;
+    expect(current.value).toEqual(2);
+    current = current.next;
+    expect(current.value).toEqual(4);
+  });
+});

@@ -1,18 +1,17 @@
 'use strict';
 
-function DuckDuckGoose(people, k) {
-  const queue = [];
-  for (const person of people) {
-    queue.push(person);
-  }
+function duckDuckGoose(people, k) {
+  const queue = [...people];
   while (queue.length > 1) {
-    for (let i = 0; i < k - 1; i++) {
+    let count = k;
+    while (count > 1) {
       queue.push(queue.shift());
+      count--;
     }
-    queue.shift();
+    queue.shift(); // person is removed here
   }
   return queue[0];
 }
 
+module.exports = { duckDuckGoose };
 
-module.exports = {DuckDuckGoose};

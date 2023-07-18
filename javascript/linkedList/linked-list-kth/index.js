@@ -27,10 +27,10 @@ function findKthFromEnd(head, k) {
   let p1 = head;
   let p2 = head;
 
-  // Move p2 k positions ahead
-  for (let i = 0; i < k; i++) {
+  // Move p2 k+1 positions ahead
+  for (let i = 0; i <= k; i++) {
     if (p2 === null) {
-      throw new Error('k is larger than the linked list size');
+      return null; // return null if k is larger than the list size
     }
     p2 = p2.next;
   }
@@ -42,11 +42,8 @@ function findKthFromEnd(head, k) {
   }
 
   // Check if p1 is null before trying to return it
-  if (p1 === null) {
-    throw new Error('k is larger than the linked list size');
-  } else {
-    return p1;
-  }
+  return p1 ? p1.value : null; // return null if the list is empty
 }
+
 
 module.exports = { findKthFromEnd, Node, LinkedList };
