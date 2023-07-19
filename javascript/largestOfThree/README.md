@@ -24,7 +24,7 @@ The three numbers that yield the maximum product are `42`, `27`, and `18`. The p
 
 ## Code
 
-[Link to Code](./maxProduct.js)
+[Link to Code](./index.js)
 
 ## Test
 
@@ -32,4 +32,4 @@ Jest tests are provided for the maxProduct function, including tests for various
 
 ## UML
 
-[Link to UML](./maxProduct.jpeg)
+[Link to UML](./largestOfThree.jpeg)
